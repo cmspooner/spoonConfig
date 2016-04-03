@@ -112,13 +112,15 @@ ${goto 28}${voffset -11}Free:
 ###############
 # - Weather - #
 ###############
-${goto 10}${voffset 0}${font Calibri Bold Caps:size=8} Weather${font}
-# Various images #  
 ${execi 3600 ~/.conky/spoonConfig/scripts/weather.py}
+${goto 10}${voffset -10}${font Calibri Bold Caps:size=8} Weather${font}
+${goto 35}${voffset -14}${alignc -20}${font Calibri Caps:size=2}${font}(${execi 600 grep "yweather:forecast" ~/.cache/weather.xml | grep -o "created=\"[^\"]*\"" | awk '{ gsub("T", " ") } 1' | awk '{ print $2 }' | awk '{ gsub(":", " ") } 1' | awk '{ print $1-4":"$2}'})
+
+# Various images #  
 # Day 1
 ${goto 20}${voffset -10}${execi 30 grep "yweather:forecast" ~/.cache/weather.xml | grep -o "day=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==1' | tr '[a-z]' '[A-Z]'}
 ${goto 28}${voffset 0}${alignc 77}${execi 30 grep "yweather:condition" ~/.cache/weather.xml | grep -o "temp=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*"}°${font}
-${voffset -22}${alignc -20}${execi 30 grep "yweather:forecast" ~/.cache/weather.xml | grep -o "low=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==1'}°/${execi 300 grep "yweather:forecast" ~/.cache/weather.xml | grep -o "high=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==1'}°
+${voffset -20}${alignc -20}${execi 30 grep "yweather:forecast" ~/.cache/weather.xml | grep -o "low=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==1'}°/${execi 300 grep "yweather:forecast" ~/.cache/weather.xml | grep -o "high=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==1'}°
 ${execi 3600 cp -f ~/.conky/spoonConfig/images/small-white/$(grep "yweather:condition" ~/.cache/weather.xml | grep -o "code=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*").png ~/.cache/weather.png}${image ~/.cache/weather.png -p 40,365 -s 30x30}\
 
 # Day 2
