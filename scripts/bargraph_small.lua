@@ -159,7 +159,7 @@ function conky_main_bars()
 			arg="",
 			max=100,
 			bg_colour={0x6D6D6D,1},
-			fg_colour={0xFFFFF,1},
+			fg_colour={0xFFFFFF,1},
 			x=30,y=124,
 			blocks=21,
 			space=1,
