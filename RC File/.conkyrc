@@ -37,7 +37,7 @@ own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
 
 alignment mr
 gap_x 1
-gap_y 276
+gap_y 281
 minimum_size 111 520
 maximum_width 111
 
@@ -70,9 +70,9 @@ ${image ~/.conky/spoonConfig/images/bg_new.png  -p 0,12}
 ###############
 ${goto 10}${voffset 10}${font Calibri Bold Caps:size=8} Network${font}
 ${goto 28}${voffset 0}${downspeedgraph wlp2s0 10,55 -l}
-${goto 28}${voffset 3}DL ${alignr}${offset -25}${downspeedf wlp2s0}
+${goto 28}${voffset 3}DL ${alignr}${offset -25}${downspeedf wlp2s0} KiB
 ${goto 28}${voffset 0}${upspeedgraph wlp2s0 10,55 -l}
-${goto 28}${voffset 3}UL ${alignr}${offset -25}${upspeedf wlp2s0}
+${goto 28}${voffset 3}UL ${alignr}${offset -25}${upspeedf wlp2s0} KiB
 ##############
 # - Memory - #
 ##############
@@ -114,7 +114,7 @@ ${goto 28}${voffset -11}Free:
 ###############
 ${execi 3600 ~/.conky/spoonConfig/scripts/weather.py}
 ${goto 10}${voffset -10}${font Calibri Bold Caps:size=8} Weather${font}
-${goto 35}${voffset -18}${alignc -20}${font Calibri Caps:size=2}${font}(${execi 600 grep "yweather:forecast" ~/.cache/weather.xml | grep -o "created=\"[^\"]*\"" | awk '{ gsub("T", " ") } 1' | awk '{ print $2 }' | awk '{ gsub(":", " ") } 1' | awk '{ print $1-4":"$2}'})
+#${goto 35}${voffset -18}${alignc -20}${font Calibri Caps:size=2}${font}(${execi 600 grep "yweather:forecast" ~/.cache/weather.xml | grep -o "created=\"[^\"]*\"" | awk '{ gsub("T", " ") } 1' | awk '{ print $2 }' | awk '{ gsub(":", " ") } 1' | awk '{ print $1-4":"$2}'})
 
 # Various images #  
 # Day 1
